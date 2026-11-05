@@ -1,0 +1,36 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-card: var(--card);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-good: var(--good);
+  --color-warn: var(--warn);
+}
+:root {
+  --bg: #fafaf9; --card: #ffffff; --fg: #1c1917; --muted: #6b6560; --line: #e7e5e4;
+  --accent: #4f46e5; --good: #15803d; --warn: #b45309;
+}
+.dark {
+  --bg: #0f0f12; --card: #17171c; --fg: #f1f0ee; --muted: #a09b95; --line: #2a2a31;
+  --accent: #818cf8; --good: #4ade80; --warn: #fbbf24;
+}
+html { color-scheme: light; }
+html.dark { color-scheme: dark; }
+body { background: var(--bg); color: var(--fg); font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-text-size-adjust: 100%; }
+
+@layer components {
+  .card { @apply rounded-xl border border-line bg-card p-4; }
+  .btn { @apply inline-flex min-h-10 items-center gap-1.5 rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white transition hover:opacity-90 disabled:opacity-40; }
+  .btn-ghost { @apply inline-flex min-h-9 items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm text-muted transition hover:bg-accent/10 hover:text-fg; }
+  .btn-outline { @apply inline-flex min-h-10 items-center gap-1.5 rounded-lg border border-line bg-card px-4 py-2 text-sm font-medium transition hover:border-accent; }
+  .chip { @apply inline-flex items-center rounded-full border border-line px-2.5 py-0.5 text-xs text-muted; }
+  .chip-on { @apply border-accent bg-accent/10 text-accent; }
+  .input { @apply w-full rounded-lg border border-line bg-card px-3 py-2 text-base outline-none focus:border-accent md:text-sm; }
+  .h1 { @apply text-2xl font-semibold tracking-tight md:text-3xl; }
+  .prose-lite li { @apply mb-1; }
+}

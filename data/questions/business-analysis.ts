@@ -1,0 +1,27 @@
+import { build } from './helper';
+
+export default build('business-analysis', 'ba', [
+  ['easy', 'What does a business analyst do?', ['Bridges business needs and technical solutions', 'Elicits, analyses, documents and validates requirements', 'Supports testing and adoption'], ['Tie to outcomes, not documents.']],
+  ['easy', 'What is the difference between functional and non-functional requirements?', ['Functional: what the system does', 'Non-functional: how well (performance, security, availability, audit)', 'Payroll example: calculates tax (functional); processes in under 1 hour (non-functional)'], ['Give both examples.']],
+  ['medium', 'How do you elicit requirements?', ['Interviews, workshops, observation, document analysis, prototypes, surveys', 'Choose by stakeholder and risk', 'Confirm back and validate'], ['Ask "why" repeatedly.']],
+  ['medium', 'How do you write a good user story?', ['As a [user], I want [goal], so that [benefit]', 'INVEST criteria', 'Acceptance criteria in Given/When/Then'], ['Include edge cases.']],
+  ['medium', 'What is a BRD versus an FRD versus an SRS?', ['BRD: business objectives and needs', 'FRD/SRS: detailed functional requirements and system behaviour', 'Agile teams use lighter artefacts'], ['Adapt to the delivery method.']],
+  ['easy', 'What is a use case?', ['Description of actor interactions with a system to achieve a goal', 'Includes main flow, alternate flows, exceptions'], ['Mention a payroll example: run payroll.']],
+  ['medium', 'How do you handle changing requirements?', ['Impact analysis on scope, time, cost', 'Prioritise and get approval via change control', 'Update documentation and communicate'], ['Embrace change but control it.']],
+  ['medium', 'Explain a gap analysis.', ['Compare current state with desired future state', 'Identify gaps in process, systems, people', 'Propose actions to close them'], ['Pair with a roadmap.']],
+  ['easy', 'What is a stakeholder map?', ['Grid of influence vs interest', 'Decides engagement approach'], ['Mention managing high-influence stakeholders closely.']],
+  ['medium', 'How do you map a business process?', ['Define scope and boundaries', 'Interview process participants', 'Draw as-is flow (BPMN or swimlane)', 'Identify pain points', 'Design to-be'], ['Validate with the people doing the work.']],
+  ['hard', 'Your stakeholders disagree on a requirement. How do you resolve it?', ['Find underlying needs', 'Facilitate a session with data', 'Escalate to the decision owner', 'Document the decision and rationale'], ['Neutral facilitator role.']],
+  ['medium', 'What is root cause analysis and when do you use it?', ['Finding underlying cause of a problem rather than symptoms', '5 Whys, fishbone, Pareto', 'Use for recurring errors, e.g. payroll discrepancies'], ['Give a short example.']],
+  ['medium', 'How do you prioritise requirements?', ['MoSCoW, value vs effort, stakeholder voting', 'Consider dependencies and compliance'], ['Be transparent.']],
+  ['easy', 'What is a requirements traceability matrix?', ['Maps requirements to design, tests and deliverables', 'Ensures coverage and impact analysis'], ['Mention audit use.']],
+  ['medium', 'How do you validate that requirements are complete?', ['Walkthroughs and reviews', 'Prototype feedback', 'Test case mapping', 'Check for ambiguity, conflicts, missing edge cases'], ['Ask "what could go wrong?"']],
+  ['hard', 'How would you analyse why payroll corrections are rising?', ['Define and baseline corrections by type, customer, period', 'Pareto to find top causes (data entry, rule errors, late changes)', 'Root cause per category', 'Recommend controls: validation, cutoff, automation', 'Track improvement'], ['Data first, then hypotheses.']],
+  ['medium', 'What is a cost-benefit analysis?', ['Compare costs (build, run) vs benefits (savings, revenue, risk reduction)', 'Calculate ROI, payback, NPV'], ['Include intangible benefits separately.']],
+  ['easy', 'What is a SWOT analysis?', ['Strengths, weaknesses, opportunities, threats', 'Used for strategic context'], ['Keep concrete.']],
+  ['medium', 'How do you support UAT as a BA?', ['Prepare test scenarios from requirements', 'Coordinate users and data', 'Log and triage defects', 'Obtain sign-off'], ['Training for testers.']],
+  ['medium', 'What is the difference between a BA and a PM?', ['BA: defines requirements and solution fit for a given scope', 'PM: owns product strategy, vision, roadmap and outcomes', 'Overlap is large in practice'], ['Be respectful of both roles.']],
+  ['hard', 'You are asked to integrate payroll with a new finance system. What requirements do you gather?', ['Data mapping (GL codes, cost centres)', 'Frequency and trigger (post-run)', 'Error handling and reconciliation', 'Security, audit, access', 'Test scenarios and cutover'], ['Reconciliation is the key.']],
+  ['medium', 'What are acceptance criteria and how do they differ from the definition of done?', ['Acceptance criteria are story-specific conditions', 'Definition of done is team-wide quality standard'], ['Short, testable statements.']],
+  ['easy', 'Which tools do you use as a BA?', ['Jira, Confluence, Visio/Lucidchart, Excel, SQL, Figma, Miro'], ['Be honest about proficiency.']],
+]);
