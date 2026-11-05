@@ -1,0 +1,27 @@
+import { build } from './helper';
+
+export default build('payroll-hr', 'hr', [
+  ['easy', 'Walk me through a typical payroll cycle.', ['Collect inputs: attendance, leave, new joiners, leavers, changes', 'Calculate gross, deductions, taxes, net', 'Review and approve variances', 'Pay: bank file/payments, payslips', 'File statutory returns and post to GL', 'Reconcile'], ['Know the order and the control points.']],
+  ['easy', 'What is the difference between gross pay and net pay?', ['Gross: total earnings before deductions', 'Net: take-home after tax, social contributions, other deductions'], ['Simple but make sure to define deductions.']],
+  ['medium', 'What are statutory deductions? Give examples.', ['Mandated by law: income tax, social security/pension, health insurance, professional tax (varies by country)', 'Employer contributions also exist'], ['Name examples of the country you target (e.g. India: PF, ESI, TDS, PT).']],
+  ['medium', 'What is an off-cycle payroll run and when is it used?', ['Run outside the regular schedule', 'Use: corrections, final settlements, bonuses, missed payments', 'Needs same controls as regular run'], ['Mention tax treatment concerns.']],
+  ['medium', 'How is overtime typically calculated?', ['Hours above standard threshold x rate multiplier (e.g. 1.5x)', 'Rules vary by jurisdiction and contract', 'Needs accurate time data and approvals'], ['Say rules are configurable.']],
+  ['hard', 'How do you handle retroactive pay changes?', ['Recalculate affected periods', 'Compute differences and pay in current run, adjusting tax/contributions', 'Audit trail and employee communication'], ['Tax effect is the tricky part.']],
+  ['easy', 'What is an HRIS?', ['System of record for employee data: profile, job, org, documents', 'Feeds payroll, benefits, time, performance'], ['Core data model matters.']],
+  ['medium', 'What is the difference between HRIS, HCM and payroll software?', ['HRIS: core HR records', 'HCM: broader suite incl. talent, learning, workforce planning', 'Payroll: pay calculation and compliance', 'Often bundled'], ['Know the industry vocabulary.']],
+  ['medium', 'What is a pay-run variance check?', ['Compare current run to the previous: headcount, gross, net, deductions', 'Investigate unusual changes', 'Key control to catch errors'], ['Mention thresholds.']],
+  ['medium', 'What are common causes of payroll errors?', ['Late or wrong input changes', 'Misconfigured rules', 'Integration failures with time or HR systems', 'Manual spreadsheets', 'Statutory updates missed'], ['Link to preventive controls.']],
+  ['hard', 'How would you design a compliance update process for payroll rules?', ['Monitor legislative changes by country', 'Triage impact and effective dates', 'Version rules with effective dating', 'Test with regression packs, parallel runs', 'Release with customer notice'], ['Effective dating is core.']],
+  ['medium', 'What is effective dating?', ['Records have start/end dates so changes apply at the right time', 'Enables retro and future-dated changes, history'], ['Key pattern in HR/payroll data.']],
+  ['easy', 'What is a payslip and what must it contain?', ['Earnings, deductions, net pay, employer info, pay period', 'Statutory info as required by local law'], ['Mention YTD totals.']],
+  ['medium', 'What is full-and-final settlement?', ['Payment at exit: pending salary, leave encashment, bonus, notice pay adjustments, deductions, gratuity where applicable'], ['Mention approvals and clearance.']],
+  ['medium', 'What is the employee lifecycle in HR?', ['Attract, hire, onboard, develop, perform, pay, retain, offboard'], ['Map product features along it.']],
+  ['medium', 'How does leave affect payroll?', ['Paid leave: no deduction', 'Unpaid leave: pay deduction (loss of pay)', 'Leave encashment and accrual liability'], ['Integration between modules matters.']],
+  ['hard', 'What data privacy considerations apply to payroll and HR data?', ['Highly sensitive: salary, bank, ID numbers, health', 'Regulations like GDPR, DPDP, local laws', 'Role-based access, encryption, audit logs, retention rules', 'Cross-border transfer'], ['Security is a product feature here.']],
+  ['medium', 'What is a payroll audit trail?', ['Immutable record of who changed what and when', 'Needed for compliance and dispute resolution'], ['Log reasons for changes.']],
+  ['easy', 'What is CTC?', ['Cost to company: total annual cost of an employee incl. salary, benefits, employer contributions'], ['Common in India.']],
+  ['medium', 'What KPIs do HR leaders care about?', ['Attrition, time to hire, engagement, absenteeism, cost per hire, payroll accuracy'], ['Connect to product features.']],
+  ['medium', 'What are the challenges of multi-country payroll?', ['Different tax/labour laws, currencies, pay frequencies, data residency, languages', 'Partners/aggregators vs in-house engines'], ['Say consolidation is hard.']],
+  ['hard', 'How would you reduce HR support tickets about payroll?', ['Classify tickets by cause', 'Self-service answers and payslip explainer', 'Proactive notices before cutoffs', 'Fix upstream data issues', 'Measure deflection'], ['Tie to metrics.']],
+  ['medium', 'What is the role of integrations in an HR-tech product?', ['Connect ATS, time, benefits, finance, identity (SSO/SCIM)', 'API quality and reliability are product features', 'Marketplace strategy'], ['Reliability and error handling.']],
+]);

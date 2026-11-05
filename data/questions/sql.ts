@@ -1,0 +1,27 @@
+import { build } from './helper';
+
+export default build('sql', 'sq', [
+  ['easy', 'What is the difference between INNER JOIN and LEFT JOIN?', ['INNER returns matching rows only', 'LEFT returns all rows from the left table plus matches; unmatched right columns are NULL', 'Use LEFT to find missing relations (e.g. employees with no payslip)'], ['Be ready to sketch with two small tables.']],
+  ['easy', 'Write a query to count employees by department.', ['SELECT department, COUNT(*) AS headcount FROM employees GROUP BY department ORDER BY headcount DESC;'], ['Mention COUNT(*) vs COUNT(col).']],
+  ['easy', 'What is the difference between WHERE and HAVING?', ['WHERE filters rows before grouping', 'HAVING filters groups after aggregation'], ['Example: departments with more than 10 people use HAVING.']],
+  ['medium', 'Find the second-highest salary.', ['SELECT MAX(salary) FROM employees WHERE salary < (SELECT MAX(salary) FROM employees);', 'Or DENSE_RANK() OVER (ORDER BY salary DESC) = 2'], ['Handle ties and nulls.']],
+  ['medium', 'Find employees who have no payslip for March.', ['SELECT e.id FROM employees e LEFT JOIN payslips p ON p.employee_id = e.id AND p.month = \'2026-03\' WHERE p.id IS NULL;'], ['Put the month filter in ON, not WHERE.']],
+  ['medium', 'What is a window function? Give an example.', ['Computes across related rows without collapsing them', 'ROW_NUMBER() OVER (PARTITION BY dept ORDER BY salary DESC)', 'Use for ranking, running totals, lag/lead'], ['Differentiate from GROUP BY.']],
+  ['medium', 'Calculate month-over-month change in total payroll cost.', ['Aggregate by month, then LAG(total) OVER (ORDER BY month)', '(total - prev) / prev as pct change'], ['Handle first month null.']],
+  ['easy', 'What is a primary key vs a foreign key?', ['Primary: uniquely identifies a row', 'Foreign: references a primary key in another table, enforcing integrity'], ['Short and crisp.']],
+  ['medium', 'How do you find duplicate records?', ['SELECT email, COUNT(*) FROM employees GROUP BY email HAVING COUNT(*) > 1;'], ['Mention how to delete duplicates safely using ROW_NUMBER.']],
+  ['medium', 'Explain NULL handling in SQL.', ['NULL means unknown; comparisons with = fail, use IS NULL', 'Aggregates ignore NULL except COUNT(*)', 'COALESCE to default'], ['Common trap: NOT IN with NULLs.']],
+  ['hard', 'Write a query for 30-day retention of users by signup week.', ['Cohort = signup week', 'Join to activity where activity date between signup+28 and signup+34 days', 'Retention = retained users / cohort size'], ['Say you would validate the definition first.']],
+  ['medium', 'What is the difference between UNION and UNION ALL?', ['UNION removes duplicates (sorts); UNION ALL keeps all and is faster'], ['Prefer UNION ALL unless dedupe needed.']],
+  ['medium', 'Get the latest payslip per employee.', ['ROW_NUMBER() OVER (PARTITION BY employee_id ORDER BY pay_date DESC) = 1 in a subquery/CTE'], ['Alternative: join to MAX(pay_date).']],
+  ['easy', 'What is an index and why use it?', ['Data structure that speeds lookups', 'Cost: slower writes and storage'], ['Index columns used in joins and filters.']],
+  ['medium', 'What is a CTE?', ['WITH clause naming a temporary result for readability and reuse', 'Recursive CTEs for hierarchies, e.g. org chart'], ['Mention readability.']],
+  ['hard', 'Query the full management chain for an employee.', ['Recursive CTE: start with employee, join to manager_id until null', 'Guard against cycles with a depth limit'], ['Data quality issues like cycles exist.']],
+  ['medium', 'How do you calculate total overtime hours per employee per week?', ['Group by employee and week (DATE_TRUNC)', 'Sum hours above 40 per week using CASE or GREATEST(hours - 40, 0)'], ['Mention timezone and shift crossing midnight.']],
+  ['easy', 'What is the difference between DELETE, TRUNCATE and DROP?', ['DELETE removes rows (can filter, logged)', 'TRUNCATE removes all rows quickly', 'DROP removes the table'], ['Warn about production use.']],
+  ['medium', 'How would you check the data quality of an employee table?', ['Null rates, duplicates, invalid values, referential integrity, outliers', 'Compare counts with source'], ['Document checks.']],
+  ['medium', 'Compute the percentage of employees in each department.', ['COUNT(*) * 100.0 / SUM(COUNT(*)) OVER () with GROUP BY department'], ['Window over aggregate is neat.']],
+  ['hard', 'Reconcile payroll totals between two tables and find mismatches.', ['FULL OUTER JOIN on employee and period', 'Filter where amounts differ or one side is NULL', 'Classify mismatches'], ['Mention tolerance for rounding.']],
+  ['easy', 'What does GROUP BY do?', ['Groups rows sharing values and applies aggregates per group'], ['Every non-aggregated select column must be grouped.']],
+  ['medium', 'What is a self join? Give an example.', ['Table joined to itself, e.g. employees to managers on e.manager_id = m.id'], ['Alias carefully.']],
+]);
